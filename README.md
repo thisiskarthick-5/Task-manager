@@ -1,1 +1,68 @@
 # Task-manager
+
+      
+    def show_menu():
+      print("\n TO-DO LIST MENU ")
+      print("1.VIEW TO-DO LIST ")
+      print("2.ADD TASK ")
+      print("3.REMOVE TASK ")
+      print("4.EXIT ")
+    
+    def view_task(tasks):
+      if not tasks:
+          print("\nYOUR TO-DO LIST IS EMPTY ")    
+      else:
+          print("TO-DO LIST :")
+          for idx,task in enumerate(tasks,start=1):
+              print(f"{idx}.{task}")
+            
+            
+    def add_task(tasks):
+      task = input("ENTER THE NEW TASK : ")
+      task_count = 0
+      tasks.append(task)
+      
+      print(f"\n ||  TASK ADDED : {task} ||")
+      for task in tasks:
+          task_count += 1
+          print(f"S.NO | {task_count} . {task}")
+          
+      print(f"TOTAL NUMBER OF TASKS ADDED : {task_count}")    
+    
+                 
+    def remove_task(tasks):
+      if not tasks:
+          print("\n YOUR TO-DO LIST IS EMPTY , NO TASK TO REMOVE ")
+      else:
+          try:
+              task_num = int(input("ENTER THE TASK NUMBER : "))
+              removed_task= tasks.pop(task_num -1)
+              print(f"TASK {removed_task} REMOVED..")
+          except(ValueError,IndexError):
+              print("INVALID TASK NUMBER ")
+            
+    def main():
+      tasks = []
+      
+      while True:
+          show_menu()
+          choice = input("ENTER THE CHOICE : ")
+          if choice == '1':
+              view_task(tasks)
+          elif choice == '2':
+              add_task(tasks)
+          elif choice == '3':
+              remove_task(tasks)
+          elif choice == '4':
+              print("EXIING THE TO-DO LIST APP , GOODBYE")
+              break
+          else:
+              print("INVALID CHOICE , PLEASE SELECT FROM THE MENU ..") 
+              
+    if __name__== "__main__":
+      main()
+    
+                       
+            
+             
+                                       
