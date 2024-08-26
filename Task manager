@@ -22,7 +22,7 @@
       task_count = 0
       tasks.append(task)
       
-      print(f"\n ||  TASK ADDED : {task} ||")
+      print(f"\n  TASK ADDED : {task} ")
       for task in tasks:
           task_count += 1
           print(f"S.NO | {task_count} . {task}")
