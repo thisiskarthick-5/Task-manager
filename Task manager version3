@@ -1,0 +1,71 @@
+#INCLUDED DELETE , VIEW OPTIONS ..
+
+def diplay_menu():
+    print("\n 1 . ADD TASK ")
+    print(" 2 . MARK AS COMPLETED ")
+    print(" 3 . DELETE TASK ")
+    print(" 4 . VIEW TASK ")
+    print(" 5 . EXIT ")
+    
+    
+def add_task(tasks):
+    task = input(" \n\n \t ...ADD TASK ...  \n ENTER THE INPUT : ")
+    tasks.append({"task" : task , "completed" : False})
+    print(" >>> TASK ADDED  ")
+    
+def mark_task(tasks):
+    view_task(tasks)
+    if tasks:
+        task_num = int(input("\n \nENTER THE COMPLETED TASK NUMBER  : "))-1
+        if 0<=task_num<len(tasks):
+            tasks[task_num]["completed"] = True
+            print(">>> TASK MARKED AS COMPLETED ")
+        else:
+            print(">>> INAVALID TASK NUMBER ")
+            
+def delete_task(tasks):
+    view_task(tasks)
+    if tasks:
+        task_num = int(input("\n \n ENTER THE TASK NUMBER TO DELETE : "))-1
+        if 0<=task_num<len(tasks):
+            tasks.pop(task_num)
+            print(">>> SELECTED TASK SUCCESSFULLY DELETED ")
+        else:
+            print(">>> INAVLID TASK NUMBER ")
+                
+def view_task(tasks):
+    if not tasks:
+        print(" \n\n \t ...VIEW TASK... \n >>> NO TASK ADDED ")
+    else:
+        for idx,task in enumerate(tasks,start=1):
+            status = "completed" if task["completed"] else "not completed"
+            print(f"  {idx}.{task['task']} [{status}]")
+               
+                    
+                
+   
+def main():
+
+    tasks = []
+    while True:
+        diplay_menu()
+        choice = input(f" \n ENTER A CHOICE : ")
+        
+        if choice == '1':
+            add_task(tasks)
+        elif choice == '2':
+            mark_task(tasks)
+        elif choice == '3':
+            delete_task(tasks)
+        elif choice == '4':
+            view_task(tasks)
+        elif choice == '5':
+            print(" \n \t>>> ..GOOD BYE..")
+            break
+        else:
+            print("\n >>> INVALID TASK NUMBER ")
+if __name__ == "__main__":
+    main()
+                                    
+                
+    
